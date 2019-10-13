@@ -1,34 +1,60 @@
 from scipy.interpolate import interp1d
 import numpy as np
+import re
+
+from registry import registry
+
+data_path = "./data/"
+
+def search( search_string ):
+    """Search name in the list of aliaces and display tuples
+    which match search string"""
+    for tup in registry:
+        show_tup = False
+        for alias in tup[2]:
+            if re.search(search_string,alias):
+                show_tup = True
+        if show_tup:
+            print(tup)
 
 
 class material:
     "Material class"
-    def __init__(self , name ):
+    def __init__(self , name , density = None ):
         self.name = name
-        if name == "H2":
-            data_file = open("Hydrogen.txt", "r")
-            T= [] ; R = []
-            t = [] ; r = []
-            num = 0
-            for line in data_file:
-                if line[0]!="#" or len(line)<1 :
-                    num+=1
-                    if num%2 :
-                        T.append( float(line[:-1].split("  ")[1]) )
-                        R.append( float(line[:-1].split("  ")[6] )/0.0000899 )
-                    else:
-                        t.append( float(line[:-1].split("  ")[1]) )
-                        r.append( float(line[:-1].split("  ")[6] )/0.0000899 )
+        self.tup  = self.find_material( name )
+        self.is_dummy = False
+        if self.tup[0]=="None":
+            self.is_dummy = True
+        if density is not None:
+            self.tup[1] = density
+        self.projected_range = self.zero
+        if not self.is_dummy:
+            self.projected_range = self.create_projected_range()
+    
+    def create_projected_range( self ):
+        "Return function which calculates projected range"
+        data_file = open( data_path + self.tup[0] ,"r")
+        kinetic_energy = [] ; proj_range = []
+        for line in data_file:
+            if line[0]!="#" or len(line)<1 :
+                kinetic_energy.append( float(line[:-1].split("  ")[1]) )
+                proj_range.append( float(line[:-1].split("  ")[6] )/ self.density() )
+        f3 = interp1d(kinetic_energy, proj_range, kind='cubic')
+        return(f3)
 
-            TT = np.array(T)
-            RR = np.array(R)
+    def density( self ):
+        "Return density of material"
+        return(self.tup[1])
 
-            tt = np.array(t[2:-2])
-            rr = np.array(r[2:-2])
+    def zero(self):
+        "Return zero"
+        return(0.)
 
-            f1 = interp1d(TT, RR, kind='linear')
-            f2 = interp1d(TT, RR, kind='quadratic')
-            f3 = interp1d(tt, rr, kind='cubic')
-            self.func = f3
-        
+    def find_material(self, name):
+        "Return tuple for the material if name in the list of aliases"
+        for tup in registry:
+            if name in tup[2]:
+                return(tup)
+        print("ERROR: Mo material found in registry")
+        return( ("None",1,["None"]) )
