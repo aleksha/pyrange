@@ -19,7 +19,18 @@ def search( search_string ):
 
 
 class material:
-    "Material class"
+    """Material class
+
+        >>> import pyrange
+        >>> pyrange.search("Гел")
+        ('Helium.txt', 0.0001753, ['He', 'Helium', 'Гелий', 'Hélium', 'Elio', 'Helio'])
+        >>> mat = pyrange.material("He")
+        >>> mat.density()
+        0.0001753
+        >>> mat.projected_range(10)
+        array(690.24529378)
+    """
+
     def __init__(self , name , density = None ):
         self.name = name
         self.tup  = self.find_material( name )
@@ -31,7 +42,7 @@ class material:
         self.projected_range = self.zero
         if not self.is_dummy:
             self.projected_range = self.create_projected_range()
-    
+
     def create_projected_range( self ):
         "Return function which calculates projected range"
         data_file = open( data_path + self.tup[0] ,"r")
