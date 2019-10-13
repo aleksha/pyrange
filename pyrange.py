@@ -21,6 +21,8 @@ def search( search_string ):
 class material:
     """Material class
 
+        Density in g/cm3
+
         >>> import pyrange
         >>> pyrange.search("Гел")
         ('Helium.txt', 0.0001753, ['He', 'Helium', 'Гелий', 'Hélium', 'Elio', 'Helio'])
