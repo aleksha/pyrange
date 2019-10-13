@@ -5,11 +5,13 @@ The module makes interpolation over tables provided bu National Institute of Sta
 
 **Proton tables:** https://physics.nist.gov/PhysRefData/Star/Text/PSTAR.html
 
-##Dependencies
+Dependencies
+------------
  - NumPy
  - SciPy
 
-##How-to use it
+How-to use it
+-------------
 ```python
 >>> import pyrange
 >>> pyrange.search("Гел")
@@ -21,7 +23,8 @@ The module makes interpolation over tables provided bu National Institute of Sta
 array(690.24529378)
 ```
 
-##To add material
+To add material
+---------------
 
 Go to https://physics.nist.gov/PhysRefData/Star/Text/PSTAR-t.html
 
