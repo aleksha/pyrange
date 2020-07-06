@@ -10,7 +10,7 @@ registry = [
     ("Argon.txt", 1.784e-3, ["Ar", "Argon", "Аргон", "Argo", "Argón"]),
     #("Carbon Amorphous (density20gcm3).txt", 2.0, ["Carbon, Углерод"]),
     ("Copper.txt", 8.96, ["Cu", "Copper", "Медь", "Kupfer", "Cobre", "Rame"]),
-    ("Gadolinium.txt", 7.9, ["Gd", "Gadolinium", "Gadolinio"]),
+    ("Gadolinium.txt", 7.9, ["Gd", "Gadolinium", "Гадолиний", "Gadolinio"]),
     ("Germanium.txt", 5.323, ["Ge", "Germanium", "Германий", "Germanio"]),
     ("Gold.txt", 19.30, ["Au", "Gold", "Золото", "Oro"]),
     #("Graphite (density 17 gcm3).txt", 1.7, ["Graphite, Графит"]),
