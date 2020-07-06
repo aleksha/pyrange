@@ -16,7 +16,7 @@ registry = [
     ("Iron.txt", 7.874, ["Fe", "Iron", "Железо"]),
     ("Krypton.txt", 0.003749, ["Kr", "Krypton", "Криптон"]),
     ("Lead.txt", 11.3415, ["Pb", "Lead", "Свинец"]),
-    ("Molybdenum.txt", 10.22, ["Mo", "Molybdenum", "Молибден"),
+    ("Molybdenum.txt", 10.22, ["Mo", "Molybdenum", "Молибден"]),
     ("Neon.txt", 0.90035e-3, ["Ne", "Neon", "Неон"]),
     ("Nitrogen.txt", 0.001251, ["N","Nitrogen", "Азот"]),
     ("Oxygen.txt", 1.42897e-3, ["O", "Oxygen", "Кислород"]),
