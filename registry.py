@@ -1,7 +1,31 @@
 # (file_name, normal density, list of aliases)
-
+# TODO: doublecheck the density values
+# TODO: decide what to do with carbons
 registry = [
-    ("Hydrogen.txt", 0.0000899, ["H", "H2", "Hydrogen", "Водород", "Wasserstoff", "Hydrogène", "Idrogeno", "Hidrógeno"] ),
-    ("Helium.txt"  , 0.0001753, ["He", "Helium", "Гелий", "Hélium", "Elio", "Helio"] ),
-    ("Berillium.txt"  , 1.848, ["Be", "Berillium", "Бериллий", "Béryllium", "Berilio", "Berillio"] )
+    ("Hydrogen.txt", 0.0000899, ["H", "H2", "Hydrogen", "Водород", "Wasserstoff", "Hydrogène", "Idrogeno", "Hidrógeno"]),
+    ("Helium.txt", 0.0001753, ["He", "Helium", "Гелий", "Hélium", "Elio", "Helio"]),
+    ("Beryllium.txt", 1.848, ["Be", "Beryllium", "Бериллий", "Béryllium", "Berilio", "Berillio"]),
+	("Aluminum.txt", 2.6989, ["Al", "Aluminum", "Aluminium", "Алюминий"]),
+    ("Argon.txt", 1.784e-3, ["Ar", "Argon", "Аргон"]),
+    #("Carbon Amorphous (density20gcm3).txt", 2.0, ["Carbon, Углерод"]),
+    ("Copper.txt", 8.92, ["Cu, Copper, Медь"]),
+    ("Gadolinium.txt", 7.9, ["Gd, Gadolinium, "]),
+    ("Germanium.txt", 5.323, ["Ge, Germanium, Германий"]),
+    ("Gold.txt", 19.31, ["Au, Gold, Золото"]),
+    #("Graphite (density 17 gcm3).txt", 1.7, ["Graphite, Графит"]),
+    ("Iron.txt", 7.874, ["Fe", "Iron", "Железо"]),
+    ("Krypton.txt", 0.003749, ["Kr", "Krypton", "Криптон"]),
+    ("Lead.txt", 11.3415, ["Pb", "Lead", "Свинец"]),
+    ("Molybdenum.txt", 10.22, ["Mo", "Molybdenum", "Молибден"),
+    ("Neon.txt", 0.90035e-3, ["Ne", "Neon", "Неон"]),
+    ("Nitrogen.txt", 0.001251, ["N","Nitrogen", "Азот"]),
+    ("Oxygen.txt", 1.42897e-3, ["O", "Oxygen", "Кислород"]),
+    ("Platinum.txt", 21.09, ["Pt", "Platinum", "Платина"]),
+    ("Silicon.txt", 2.33, ["Si", "Silicon", "Кремний"]),
+    ("Silver.txt", 10.5, ["Ag", "Silver", "Серебро"]),
+    ("Tin.txt", 7.31, ["Sn", "Tin", "Олово"]),
+    ("Titanium.txt", 4.54, ["Ti", "Titanium", "Титан"]),
+    ("Tungsten.txt", 19.25, ["W", "Tungsten", "Вольфрам"]),
+    ("Uranium.txt", 19.05, ["U", "Uranium", "Уран"]),
+    ("Xenon.txt", 0.005894, ["Xe", "Xenon", "Ксенон"]),
 ]
