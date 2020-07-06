@@ -5,7 +5,7 @@ registry = [
     ("Hydrogen.txt", 0.0000899, ["H", "H2", "Hydrogen", "Водород", "Wasserstoff", "Hydrogène", "Idrogeno", "Hidrógeno"]),
     ("Helium.txt", 0.0001753, ["He", "Helium", "Гелий", "Hélium", "Elio", "Helio"]),
     ("Beryllium.txt", 1.848, ["Be", "Beryllium", "Бериллий", "Béryllium", "Berilio", "Berillio"]),
-	("Aluminum.txt", 2.6989, ["Al", "Aluminum", "Aluminium", "Алюминий"]),
+    ("Aluminum.txt", 2.6989, ["Al", "Aluminum", "Aluminium", "Алюминий"]),
     ("Argon.txt", 1.784e-3, ["Ar", "Argon", "Аргон"]),
     #("Carbon Amorphous (density20gcm3).txt", 2.0, ["Carbon, Углерод"]),
     ("Copper.txt", 8.92, ["Cu, Copper, Медь"]),
