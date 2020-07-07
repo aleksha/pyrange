@@ -21,6 +21,8 @@ How-to use it
 0.0001753
 >>> mat.projected_range(10)
 array(690.24529378)
+>>> mat.projected_range( [1,10,100] )
+array([1.21905305e+01, 6.90245294e+02, 4.52139190e+04])
 ```
 
 To add material
