@@ -28,9 +28,9 @@ To add material
 
 Go to https://physics.nist.gov/PhysRefData/Star/Text/PSTAR-t.html
 
-Select materisl and clicl __Submit__ button
+Select material and click __Submit__ button
 
-Save file to **./data/** (don't forget to comment non-data strings by the hash sign)
+Save file to **./data/** (don't forget to comment non-data strings with the hash sign)
 
 Update **registry.py** by adding a tuple of the next structure:
  - First element is the filename.

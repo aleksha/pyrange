@@ -50,7 +50,7 @@ class material:
         data_file = open( data_path + self.tup[0] ,"r")
         kinetic_energy = [] ; proj_range = []
         for line in data_file:
-            if line[0]!="#" or len(line)<1 :
+            if line and not line.isspace() and line[0]!="#":
                 kinetic_energy.append( float(line[:-1].split("  ")[1]) )
                 proj_range.append( float(line[:-1].split("  ")[6] )/ self.density() )
         f3 = interp1d(kinetic_energy, proj_range, kind='cubic')
