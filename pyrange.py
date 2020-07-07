@@ -6,13 +6,14 @@ from registry import registry
 
 data_path = "./data/"
 
-def search( search_string ):
+
+def search(search_string):
     """Search name in the list of aliaces and display tuples
     which match search string"""
     for tup in registry:
         show_tup = False
         for alias in tup[2]:
-            if re.search(search_string,alias):
+            if re.search(search_string, alias):
                 show_tup = True
         if show_tup:
             print(tup)
@@ -33,41 +34,55 @@ class material:
         array(690.24529378)
     """
 
-    def __init__(self , name , density = None ):
+    def __init__(self, name, density=None):
+
         self.name = name
-        self.tup  = self.find_material( name )
-        self.is_dummy = False
-        if self.tup[0]=="None":
-            self.is_dummy = True
+        self.tup = self.find_material(name)
+        self.is_dummy = self.tup[0] == "None"
+
         if density is not None:
             self.tup[1] = density
-        self.projected_range = self.zero
+
+        zero_fn = lambda x: 0.
+        self.projected_range = zero_fn
+        self.csda_range = zero_fn
+        self.detour_factor = zero_fn
+
+        self.kinetic_energy_list = []
+        self.projected_range_list = []
+        self.csda_range_list = []
+        self.detour_factor_list = []
+
         if not self.is_dummy:
-            self.projected_range = self.create_projected_range()
+            self.read_lists()
+            self.projected_range = interp1d(
+                self.kinetic_energy_list, self.projected_range_list, kind="cubic"
+            )
+            self.csda_range = interp1d(
+                self.kinetic_energy_list, self.csda_range_list, kind="cubic"
+            )
+            self.detour_factor = interp1d(
+                self.kinetic_energy_list, self.detour_factor_list, kind="cubic"
+            )
 
-    def create_projected_range( self ):
-        "Return function which calculates projected range"
-        data_file = open( data_path + self.tup[0] ,"r")
-        kinetic_energy = [] ; proj_range = []
+    def read_lists(self):
+        data_file = open(data_path + self.tup[0], "r")
         for line in data_file:
-            if line and not line.isspace() and line[0]!="#":
-                kinetic_energy.append( float(line[:-1].split("  ")[1]) )
-                proj_range.append( float(line[:-1].split("  ")[6] )/ self.density() )
-        f3 = interp1d(kinetic_energy, proj_range, kind='cubic')
-        return(f3)
+            if line and not line.isspace() and line[0] != "#":
+                columns = line.split()
+                self.kinetic_energy_list.append(float(columns[0]))
+                self.projected_range_list.append(float(columns[-2]) / self.density())
+                self.csda_range_list.append(float(columns[-3]) / self.density())
+                self.detour_factor_list.append(float(columns[-1]))
 
-    def density( self ):
+    def density(self):
         "Return density of material"
-        return(self.tup[1])
-
-    def zero(self):
-        "Return zero"
-        return(0.)
+        return self.tup[1]
 
     def find_material(self, name):
         "Return tuple for the material if name in the list of aliases"
         for tup in registry:
             if name in tup[2]:
-                return(tup)
+                return tup
         print("ERROR: Mo material found in registry")
-        return( ("None",1,["None"]) )
+        return ("None", 1, ["None"])
