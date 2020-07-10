@@ -1,4 +1,6 @@
 # (file_name, normal density, list of aliases)
+from collections import namedtuple
+material_tuple = namedtuple('material_tuple','filename density names')
 
 registry = [
     ("Hydrogen.txt", 0.0000899, ["H", "H2", "Hydrogen", "Водород", "Wasserstoff", "Hydrogène", "Idrogeno", "Hidrógeno"]),
@@ -6,12 +8,12 @@ registry = [
     ("Beryllium.txt", 1.848, ["Be", "Beryllium", "Бериллий", "Béryllium", "Berilio", "Berillio"]),
     ("Aluminum.txt", 2.70, ["Al", "Aluminum", "Aluminium", "Алюминий", "Aluminio", "Alluminio"]),
     ("Argon.txt", 1.784e-3, ["Ar", "Argon", "Аргон", "Argo", "Argón"]),
-    ("Carbon Amorphous (density20gcm3).txt", 2.0, ["C", "Carbon", "Углерод", "Kohlenstoff", "Carbono", "Carbonio"]), #
+    ("Carbon Amorphous (density20gcm3).txt", 2.0, ["C", "Carbon", "Углерод", "Kohlenstoff", "Carbono", "Carbonio"]),
     ("Copper.txt", 8.96, ["Cu", "Copper", "Медь", "Kupfer", "Cobre", "Rame"]),
     ("Gadolinium.txt", 7.9, ["Gd", "Gadolinium", "Гадолиний", "Gadolinio"]),
     ("Germanium.txt", 5.323, ["Ge", "Germanium", "Германий", "Germanio"]),
     ("Gold.txt", 19.30, ["Au", "Gold", "Золото", "Oro"]),
-    ("Graphite (density 17 gcm3).txt", 1.7, ["Graphite", "Графит", "Graphit", "Grafit", "Grafito", "Grafite"]), #
+    ("Graphite (density 17 gcm3).txt", 1.7, ["Graphite", "Графит", "Graphit", "Grafit", "Grafito", "Grafite"]),
     ("Iron.txt", 7.874, ["Fe", "Iron", "Железо", "Eisen", "Ferro", "Hierro", "Fierro"]),
     ("Krypton.txt", 0.003749, ["Kr", "Krypton", "Криптон", "Kripton", "Kripto", "Cripto", "Kriptón", "Criptón"]),
     ("Lead.txt", 11.34, ["Pb", "Lead", "Свинец", "Blei", "Plomo", "Piombo"]),
@@ -28,3 +30,6 @@ registry = [
     ("Uranium.txt", 19.1, ["U", "Uranium", "Уран", "Uran", "Uranio"]),
     ("Xenon.txt", 0.005894, ["Xe", "Xenon", "Ксенон", "Xeno", "Xenón"]),
 ]
+
+for i in range(len(registry)):
+    registry[i] = material_tuple(*registry[i])
