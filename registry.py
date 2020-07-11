@@ -81,7 +81,7 @@ registry = [
     ("Polycarbonate (Makrolon Lexan).txt", 1.2, ["Polycarbonate (Makrolon, Lexan)"]),
     ("Polymethyl Methacralate (Lucite Perspex).txt", 1.19, ["Polymethyl methacralate (Lucite, Perspex)"]),
     ("Plastic Scintillator (Vinyltoluene based).txt", 1.032, ["Plastic scintillator (Vinyltoluene based)"]),
-    ("Nylon type 6 and type 66.txt", 1.14 ["Nylon, type 6 and type 6/6"]),
+    ("Nylon type 6 and type 66.txt", 1.14, ["Nylon, type 6 and type 6/6"]),
 
 ]
 
@@ -90,9 +90,8 @@ for i in range(len(registry)):
     registry[i] = material_tuple(*registry[i])
 
     # make sure all entries are valid
-    entry_is_ok = True
-    entry_is_ok = entry_is_ok and type(registry[i].filename) == type(str())
-    entry_is_ok = entry_is_ok and type(registry[i].density) == type(float())
-    entry_is_ok = entry_is_ok and type(registry[i].names) == type(list())
-    entry_is_ok = entry_is_ok and len(registry[i]) > 0
-    assert entry_is_ok, f'Registry entry {i} is broken'
+    assertion_message = f'Registry entry {i} broken: {registry[i]}'
+    assert type(registry[i].filename) == type(str()), assertion_message
+    assert type(registry[i].density) in (type(float()), type(int())), assertion_message
+    assert type(registry[i].names) == type(list()), assertion_message
+    assert len(registry[i]) > 0, assertion_message
