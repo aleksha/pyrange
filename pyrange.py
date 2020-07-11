@@ -12,7 +12,7 @@ def search(search_string):
     which match search string"""
     for tup in registry:
         show_tup = False
-        for alias in tup[2]:
+        for alias in tup.names:
             if re.search(search_string, alias):
                 show_tup = True
         if show_tup:
@@ -30,7 +30,7 @@ class material:
         >>> pyrange.search("Гел")
         ('Helium.txt', 0.0001753, ['He', 'Helium', 'Гелий', 'Hélium', 'Elio', 'Helio'])
         >>> mat = pyrange.material("He")
-        >>> mat.density()
+        >>> mat.density
         0.0001753
         >>> mat.projected_range(10)
         array(690.24529378)

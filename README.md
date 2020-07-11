@@ -17,7 +17,7 @@ How-to use it
 >>> pyrange.search("Гел")
 ('Helium.txt', 0.0001753, ['He', 'Helium', 'Гелий', 'Hélium', 'Elio', 'Helio'])
 >>> mat = pyrange.material("He")
->>> mat.density()
+>>> mat.density
 0.0001753
 >>> mat.projected_range(10)
 array(690.24529378)
