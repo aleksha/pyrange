@@ -5,13 +5,12 @@ The module makes interpolation over tables provided bu National Institute of Sta
 
 **Proton tables:** https://physics.nist.gov/PhysRefData/Star/Text/PSTAR.html
 
-Dependencies
-------------
+## Dependencies
  - NumPy
  - SciPy
+ - Matplotlib
 
-How-to use it
--------------
+## How-to use it
 ```python
 >>> import pyrange
 >>> pyrange.search("Гел")
@@ -23,10 +22,22 @@ How-to use it
 array(690.24529378)
 >>> mat.projected_range( [1,10,100] )
 array([1.21905305e+01, 6.90245294e+02, 4.52139190e+04])
+>>> pyrange.search("NaI")
+material_tuple(filename='Sodium Iodide.txt', density=3.667, names=['Sodium iodide', 'Иодид натрия', 'Иодистый натрий', 'NaI'])
+>>> mat2 = pyrange.material("NaI")
+>>> mat2.density
+3.667
+>>> mat2.projected_range( [1,10,100,1000] )
+array([  1.73275157e-03,   7.01936188e-02,   3.64875920e+00,
+         1.42787019e+02])
+>>> mat2.csda_range( [1,10,100,1000] )
+array([  1.83201527e-03,   7.15025907e-02,   3.68966458e+00,
+         1.43686938e+02])
+>>> mat2.detour_factor( [1,10,100,1000] )
+array([ 0.9457,  0.9818,  0.9888,  0.9937])
 ```
 
-To add material
----------------
+## To add material
 
 Go to https://physics.nist.gov/PhysRefData/Star/Text/PSTAR-t.html
 
