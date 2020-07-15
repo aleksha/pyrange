@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 import random
 import numpy as np
 
+'''
+leave-one-out for 3 random materials for each variable
+'''
+
 mat_tuples = random.sample(pyrange.registry, k=3)
 materials = [pyrange.material(tup.names[0]) for tup in mat_tuples]
 
