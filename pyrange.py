@@ -53,6 +53,10 @@ class material:
 
         if not self.is_dummy:
             self.read_table()
+            self.create_functions()
+
+
+    def create_functions(self)
             self.projected_range = interp1d(
                 self.table['kinetic_energy'], self.table['projected_range'], kind="cubic"
             )

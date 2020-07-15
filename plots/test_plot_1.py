@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 import random
 import numpy as np
 
+'''
+plots NIST data together with interpolating function for 3 random materials 
+'''
+
 mat_tuples = random.sample(pyrange.registry, k=3)
 materials = [pyrange.material(tup.names[0]) for tup in mat_tuples]
 
