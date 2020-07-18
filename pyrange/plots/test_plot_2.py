@@ -11,7 +11,7 @@ mat_tuples = random.sample(pyrange.registry, k=3)
 materials = [pyrange.material(tup.names[0]) for tup in mat_tuples]
 
 #TODO: rename
-foo = lambda mylist, i: [x for j,x in enumerate(mylist) if j!=i]
+loo = lambda mylist, i: [x for j,x in enumerate(mylist) if j!=i]
 ar = np.asarray
 epsilon = 1e-6
 
@@ -27,7 +27,7 @@ for material in materials:
     detour_factor_true = material.table['detour_factor'][1:-1]
 
     for i in range(1, n+1):
-        loo_table = {col:foo(material.table[col],i) for col in material.table}
+        loo_table = {col:loo(material.table[col],i) for col in material.table}
         material.create_functions(loo_table)
         csda_range_pred.append(material.csda_range(x[i-1])[()])
         projected_range_pred.append(material.projected_range(x[i-1])[()])
