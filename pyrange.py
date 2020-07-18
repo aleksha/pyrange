@@ -1,11 +1,12 @@
 from scipy.interpolate import interp1d
 import numpy as np
 import re
+import pathlib
 
-from registry import registry
+from pyrange.registry import registry
 
-data_path = "./data/"
 
+data_path = pathlib.Path(__file__).parent.absolute() / "./data/"
 
 def search(search_string):
     """Search name in the list of aliaces and display tuples
@@ -71,7 +72,7 @@ class material:
             )
 
     def read_table(self):
-        data_file = open(data_path + self.tup.filename, "r")
+        data_file = open(data_path / self.tup.filename, "r")
         for line in data_file:
             if line and not line.isspace() and line[0] != "#":
                 columns = line.split()
