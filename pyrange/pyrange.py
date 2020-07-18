@@ -84,7 +84,7 @@ class material:
                 self.table['projected_range'].append(float(columns[-2]) / self.density)
                 self.table['csda_range'].append(float(columns[-3]) / self.density)
                 self.table['detour_factor'].append(float(columns[-1]))
-                self.table['total_stopping_power'].append(float(columns[3]))
+                self.table['total_stopping_power'].append(float(columns[3]) / self.density)
 
     def find_material(self, name):
         "Return tuple for the material if name in the list of aliases"

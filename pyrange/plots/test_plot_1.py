@@ -12,6 +12,7 @@ materials = [pyrange.material(tup.names[0]) for tup in mat_tuples]
 
 variables = lambda material: ((material.csda_range, material.table['csda_range'], 'csda_range'),
 (material.projected_range, material.table['projected_range'], 'projected_range'),
+(material.total_stopping_power, material.table['total_stopping_power'], 'total_stopping_power'),
 (material.detour_factor, material.table['detour_factor'], 'detour_factor'))
 
 for material in materials:
