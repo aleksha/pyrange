@@ -45,6 +45,7 @@ for material in materials:
     plt.plot(x,(csda_range_pred-csda_range_true)/(csda_range_true+epsilon),'o',label='CSDA range')
     plt.plot(x,(projected_range_pred-projected_range_true)/(projected_range_true+epsilon),'o',label='projected range')
     plt.plot(x,(detour_factor_pred-detour_factor_true)/(detour_factor_true+epsilon),'o',label='detour factor relative')
+    plt.title(f'Material: {material.name}')
     ax = plt.gca()
     ax.legend()
     plt.show()
