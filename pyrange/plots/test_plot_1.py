@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 import random
 import numpy as np
 
+'''
+plots NIST data together with interpolating function for 3 random materials 
+'''
+
 mat_tuples = random.sample(pyrange.registry, k=3)
 materials = [pyrange.material(tup.names[0]) for tup in mat_tuples]
 
@@ -17,5 +21,5 @@ for material in materials:
         y_pred = function(x_pred)
         plt.plot(x,y,'o')
         plt.plot(x_pred,y_pred)
-        plt.title(f'Material: {material.name}\n Variable: {variable_name}')
+        plt.title('Interpolation plot\nMaterial: {material.name}\nVariable: {variable_name}')
         plt.show()

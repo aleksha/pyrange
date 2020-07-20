@@ -1,11 +1,12 @@
 from scipy.interpolate import interp1d
 import numpy as np
 import re
+import pathlib
 
-from registry import registry
+from pyrange.registry import registry
 
-data_path = "./data/"
 
+data_path = pathlib.Path(__file__).parent.absolute() / "./data/"
 
 def search(search_string):
     """Search name in the list of aliaces and display tuples
@@ -53,18 +54,25 @@ class material:
 
         if not self.is_dummy:
             self.read_table()
+            self.create_functions()
+
+
+    def create_functions(self, table = None):
+            if not table:
+                table = self.table
+            
             self.projected_range = interp1d(
-                self.table['kinetic_energy'], self.table['projected_range'], kind="cubic"
+                table['kinetic_energy'], table['projected_range'], kind="cubic"
             )
             self.csda_range = interp1d(
-                self.table['kinetic_energy'], self.table['csda_range'], kind="cubic"
+                table['kinetic_energy'], table['csda_range'], kind="cubic"
             )
             self.detour_factor = interp1d(
-                self.table['kinetic_energy'], self.table['detour_factor'], kind="cubic"
+                table['kinetic_energy'], table['detour_factor'], kind="cubic"
             )
 
     def read_table(self):
-        data_file = open(data_path + self.tup.filename, "r")
+        data_file = open(data_path / self.tup.filename, "r")
         for line in data_file:
             if line and not line.isspace() and line[0] != "#":
                 columns = line.split()

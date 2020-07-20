@@ -54,3 +54,8 @@ Update **registry.py** by adding a tuple of the next structure:
 
 Make a pull request into master (development branch will appear soon).
 
+## Running plots
+
+```python
+python -m pyrange.plots.test_plot_1
+```
