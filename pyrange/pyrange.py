@@ -45,12 +45,13 @@ class material:
         self.density = density if density else self.tup.density
         self.is_dummy = (self.tup.filename == "None")
 
-        zero_fn = lambda x: 0.
+        zero_fn = lambda x: np.asarray(x)*0.
         self.projected_range = zero_fn
         self.csda_range = zero_fn
         self.detour_factor = zero_fn
+        self.total_stopping_power = zero_fn
 
-        self.table = {name:list() for name in ['kinetic_energy', 'projected_range', 'csda_range', 'detour_factor']} 
+        self.table = {name:list() for name in ['kinetic_energy', 'projected_range', 'csda_range', 'detour_factor', 'total_stopping_power']} 
 
         if not self.is_dummy:
             self.read_table()
@@ -70,6 +71,9 @@ class material:
             self.detour_factor = interp1d(
                 table['kinetic_energy'], table['detour_factor'], kind="cubic"
             )
+            self.total_stopping_power = interp1d(
+                table['kinetic_energy'], table['total_stopping_power'], kind="cubic"
+            )
 
     def read_table(self):
         data_file = open(data_path / self.tup.filename, "r")
@@ -80,6 +84,7 @@ class material:
                 self.table['projected_range'].append(float(columns[-2]) / self.density)
                 self.table['csda_range'].append(float(columns[-3]) / self.density)
                 self.table['detour_factor'].append(float(columns[-1]))
+                self.table['total_stopping_power'].append(float(columns[3]) / self.density)
 
     def find_material(self, name):
         "Return tuple for the material if name in the list of aliases"
