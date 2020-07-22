@@ -22,5 +22,5 @@ for material in materials:
         y_pred = function(x_pred)
         plt.plot(x,y,'o')
         plt.plot(x_pred,y_pred)
-        plt.title(f'Material: {material.name}\n Variable: {variable_name}')
+        plt.title('Interpolation plot\nMaterial: {material.name}\nVariable: {variable_name}')
         plt.show()
