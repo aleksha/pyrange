@@ -2,6 +2,7 @@
 Python module to calculate range and stopping power for protons in different materials.
 
 The module makes interpolation over tables provided bu National Institute of Standards and Technology.
+Stopping power calculation is donw with cubic spline, while ranges uses simple cubic interpolation.
 
 **Proton tables:** https://physics.nist.gov/PhysRefData/Star/Text/PSTAR.html
 
