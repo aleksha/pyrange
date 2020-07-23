@@ -1,14 +1,20 @@
-from .. import pyrange
+import pyrange
 import matplotlib.pyplot as plt
 import random
 import numpy as np
+import argparse
 
 '''
-leave-one-out for 3 random materials for each variable
+leave-one-out for each variable for selected materials (3 random materials by default)
 '''
 
-mat_tuples = random.sample(pyrange.registry, k=3)
-materials = [pyrange.material(tup.names[0]) for tup in mat_tuples]
+# read materials from the arguments
+parser = argparse.ArgumentParser(description='does stuff')
+parser.add_argument('materials', type=str, nargs='*', help='materials for the plot')
+args = parser.parse_args()
+
+random_mat_names = [tup.names[0] for tup in random.sample(pyrange.registry, k=3)]
+materials = [pyrange.material(mat_name) for mat_name in (args.materials if len(args.materials) else random_mat_names)]
 
 #TODO: rename
 loo = lambda mylist, i: [x for j,x in enumerate(mylist) if j!=i]
@@ -46,7 +52,6 @@ for material in materials:
     total_stopping_power_pred = ar(total_stopping_power_pred)
     total_stopping_power_true = ar(total_stopping_power_true)
 
-    csda_range_true
     plt.plot(x,(csda_range_pred-csda_range_true)/(csda_range_true+epsilon),'o',label='CSDA range')
     plt.plot(x,(projected_range_pred-projected_range_true)/(projected_range_true+epsilon),'o',label='projected range')
     plt.plot(x,(detour_factor_pred-detour_factor_true)/(detour_factor_true+epsilon),'o',label='detour factor')
