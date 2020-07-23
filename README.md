@@ -56,6 +56,7 @@ Make a pull request into master (development branch will appear soon).
 
 ## Running plots
 
-```python
+```bash
 python -m pyrange.plots.test_plot_1
+python -m pyrange.plots.test_plot_2 He "Water"
 ```
