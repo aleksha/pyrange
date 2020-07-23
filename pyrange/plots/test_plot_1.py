@@ -6,7 +6,7 @@ import argparse
 from functools import reduce
 
 '''
-plots NIST data together with interpolating function for 3 random materials 
+plots NIST data together with interpolating function for selected materials (3 random materials by default)
 '''
 
 # read materials from the arguments
