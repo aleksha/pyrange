@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import random
 import numpy as np
 import argparse
+from functools import reduce
 
 '''
 plots NIST data together with interpolating function for 3 random materials 
@@ -21,10 +22,13 @@ variables = lambda material: ((material.csda_range, material.table['csda_range']
 (material.total_stopping_power, material.table['total_stopping_power'], 'total_stopping_power'),
 (material.detour_factor, material.table['detour_factor'], 'detour_factor'))
 
+concat = lambda x,y : np.concatenate((x,y))
+
 for material in materials:
     for (function, y, variable_name) in variables(material):
         x = material.table['kinetic_energy']
-        x_pred = np.linspace(min(x), max(x), 300)
+        linspaces_list = [np.linspace(x[i], x[i+1], 10) for i in range(len(x)-1)]
+        x_pred = reduce(concat,linspaces_list)
         y_pred = function(x_pred)
         plt.plot(x,y,'o')
         plt.plot(x_pred,y_pred)

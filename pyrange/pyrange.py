@@ -87,9 +87,9 @@ class material:
                 self.table['total_stopping_power'].append(float(columns[3]) / self.density)
 
     def find_material(self, name):
-        "Return tuple for the material if name in the list of aliases"
+        "Return tuple for the material if the name is in the list of aliases"
         for tup in registry:
             if name in tup.names:
                 return tup
-        print("ERROR: Mo material found in registry")
+        print("ERROR: Material not found in the registry")
         return ("None", 1, ["None"])

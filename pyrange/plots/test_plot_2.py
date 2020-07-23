@@ -5,7 +5,7 @@ import numpy as np
 import argparse
 
 '''
-leave-one-out for 3 random materials for each variable
+leave-one-out for each variable for selected materials (3 random materials by default)
 '''
 
 # read materials from the arguments
@@ -52,10 +52,10 @@ for material in materials:
     total_stopping_power_pred = ar(total_stopping_power_pred)
     total_stopping_power_true = ar(total_stopping_power_true)
 
-    csda_range_true
     plt.plot(x,(csda_range_pred-csda_range_true)/(csda_range_true+epsilon),'o',label='CSDA range')
     plt.plot(x,(projected_range_pred-projected_range_true)/(projected_range_true+epsilon),'o',label='projected range')
     plt.plot(x,(detour_factor_pred-detour_factor_true)/(detour_factor_true+epsilon),'o',label='detour factor')
+    plt.plot(x,(total_stopping_power_pred-total_stopping_power_true)/(total_stopping_power_true+epsilon),'o',label='total stopping power')
     plt.title(f'Relative error\nMaterial: {material.name}')
     ax = plt.gca()
     ax.legend()
