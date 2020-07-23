@@ -34,7 +34,7 @@ for material in materials:
         csda_range_pred.append(material.csda_range(x[i-1])[()])
         projected_range_pred.append(material.projected_range(x[i-1])[()])
         detour_factor_pred.append(material.detour_factor(x[i-1])[()])
-        total_stopping_power_pred.append(material.detour_factor(x[i-1]))
+        total_stopping_power_pred.append(material.total_stopping_power(x[i-1]))
     
 
     csda_range_pred = ar(csda_range_pred)
