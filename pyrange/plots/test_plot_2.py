@@ -34,7 +34,7 @@ for material in materials:
         csda_range_pred.append(material.csda_range(x[i-1])[()])
         projected_range_pred.append(material.projected_range(x[i-1])[()])
         detour_factor_pred.append(material.detour_factor(x[i-1])[()])
-        total_stopping_power_pred.append(material.total_stopping_power(x[i-1]))
+        total_stopping_power_pred.append(material.detour_factor(x[i-1]))
     
 
     csda_range_pred = ar(csda_range_pred)
@@ -50,7 +50,6 @@ for material in materials:
     plt.plot(x,(csda_range_pred-csda_range_true)/(csda_range_true+epsilon),'o',label='CSDA range')
     plt.plot(x,(projected_range_pred-projected_range_true)/(projected_range_true+epsilon),'o',label='projected range')
     plt.plot(x,(detour_factor_pred-detour_factor_true)/(detour_factor_true+epsilon),'o',label='detour factor')
-    plt.plot(x,(total_stopping_power_pred-total_stopping_power_true)/(total_stopping_power_true+epsilon),'o',label='total stopping power')
     plt.title(f'Relative error\nMaterial: {material.name}')
     ax = plt.gca()
     ax.legend()
